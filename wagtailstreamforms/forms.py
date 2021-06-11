@@ -42,7 +42,8 @@ class FormBuilder:
             registered_cls = registered_fields[field_type]()
             field_name = registered_cls.get_formfield_name(field_value)
             field_cls = registered_cls.get_formfield(field_value)
-            formfields[field_name] = field_cls
+            field_id = field.get('id')
+            formfields["%s_%s" % (field_name, field_id)] = field_cls
 
         # add fields to uniquely identify the form
         formfields["form_id"] = forms.CharField(widget=forms.HiddenInput)
