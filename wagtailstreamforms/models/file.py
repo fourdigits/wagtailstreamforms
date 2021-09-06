@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 from django.db import models, transaction
 from django.db.models.signals import post_delete
 from django.utils.translation import ugettext_lazy as _
@@ -13,7 +15,11 @@ class FormSubmissionFile(models.Model):
         related_name="files",
     )
     field = models.CharField(verbose_name=_("Field"), max_length=255)
-    file = models.FileField(verbose_name=_("File"), upload_to="streamforms/")
+    file = models.FileField(
+        verbose_name=_("File"),
+        upload_to="streamforms/",
+        storage=FileSystemStorage(location=settings.PRIVATE_ROOT),
+    )
 
     def __str__(self):
         return self.file.name
