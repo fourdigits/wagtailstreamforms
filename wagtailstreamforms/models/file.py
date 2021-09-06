@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.db import models, transaction
 from django.db.models.signals import post_delete
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -30,7 +31,7 @@ class FormSubmissionFile(models.Model):
 
     @property
     def url(self):
-        return self.file.url
+        return reverse("streamform_download", args=[self.file.name])
 
 
 def delete_file_from_storage(instance, **kwargs):
