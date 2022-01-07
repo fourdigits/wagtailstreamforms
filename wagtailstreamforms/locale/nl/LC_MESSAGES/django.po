@@ -242,7 +242,7 @@ msgstr "Volgende"
 
 #: templates/streamforms/wagtailadmin/shared/datetimepicker_translations.html:6
 msgid "January"
-msgstr "January"
+msgstr "Januari"
 
 #: templates/streamforms/wagtailadmin/shared/datetimepicker_translations.html:7
 msgid "February"
